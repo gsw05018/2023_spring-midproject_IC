@@ -20,7 +20,7 @@
     </div>
     <!-- 리스트 상단 바 -->
     <div class="article-list-box">
-        <span>번호</span>
+        <span >번호</span>
         <span>작성자</span>
         <span>작성날짜</span>
         <span>수정날짜</span>
@@ -32,13 +32,13 @@
     <div class="accordion">
         <!-- 리스트 목록  (accordion안에서만 넣어야 작동 가능)-->
         <!--      리스트1 시작  -->
-        <div class="accordion-item ">
+        <div class="accordion-item " th:each="question, loop : ${paging}">
             <div class="accordion-header">
-                <span>01번</span>
-                <span>인철</span>
-                <span>23.08.02</span>
-                <span>23.08.03</span>
-                <span>ㅋㅋㅋ</span>
+                <span th:text="${question.id}"></span>
+                <span th:text="${question.author.username}"></span>
+                <span th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+                <span th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+                <span th:text="${question.subject}"></span>
                 <span>08</span>
                 <i class="fas fa-plus"></i>
             </div>
@@ -56,10 +56,10 @@
                     <!-- 상세게시판 -->
 
                     <ul>
-                        <li><span>01</span></li>
-                        <li><span>한인철</span></li>
-                        <li><span>23.09.08</span></li>
-                        <li><span>23.09.09</span></li>
+                        <li><span th:text="${question.id}"></span></li>
+                        <li><span th:text="${question.author.username}"></span></li>
+                        <span th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+                        <span th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></span>
                         <li><span>01</span></li>
                         <li><span>01</span></li>
                     </ul>
@@ -70,7 +70,7 @@
                             </li>
                         </ul>
                         <ul style="width : 100%; text-align : left ;">
-                            <li style=" width : 100% ; text-align : left ; padding : 10px ;"><span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, doloremque odit cumque temporibus quibusdam nisi laborum, aperiam distinctio fuga voluptas neque doloribus magnam at quis iure? Unde sapiente sunt in.</span>
+                            <li style=" width : 100% ; text-align : left ; padding : 10px ;" ><span th:text="${question.subject}"></span>
                             </li>
                         </ul>
                     </div>
@@ -150,41 +150,7 @@
         </div>
         <!-- 리스트 1 끝 -->
 
-        <div class="accordion-item">
-            <div class="accordion-header">
-                <span>01번</span>
-                <span>인철</span>
-                <span>23.08.02</span>
-                <span>23.08.03</span>
-                <span>ㅋㅋㅋ</span>
-                <span>08</span>
-                <i class="fas fa-plus"></i>
-            </div>
-            <div class="accordion-content">
-                짱구
-            </div>
-        </div>
-
-
-<!--     리스트 목록 끝   -->
-
     </div>
-
-
-    <!--페이지버튼-->
-    <div class="festival-pagination">
-        <ul>
-            <li class="page-number"><a href="arrow"><</a></li>
-            <li class="page-number current-page"><a href="#">1</a></li>
-            <li class="page-number"><a href="#">2</a></li>
-            <li class="page-number"><a href="#">3</a></li>
-            <li class="page-number"><a href="#">4</a></li>
-            <li class="page-number"><a href="#">5</a></li>
-            <li class="page-number"><a href="arrow">></a></li>
-            <!-- 페이지 번호를 필요한 만큼 추가 -->
-        </ul>
-    </div>
-
 
 </div>
 
